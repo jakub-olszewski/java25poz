@@ -2,10 +2,13 @@ package pl.sdacademy.javapoz25;
 
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static pl.sdacademy.javapoz25.CalculatorImpl.DIV_ERROR_MESSAGE;
 
 /**
  * TODO Stwórz testy metod
@@ -62,14 +65,56 @@ public class CalculatorTest {
         assertEquals("12",calc.display(),"Display must contain 12!");
     }
 
+    /**
+     * Testowanie wyjątku zasadach ogólnych
+     */
     @Test(expected = IllegalArgumentException.class)
     public void shouldDisplayErrorWhenDivByZeroTest(){
 
-        //when
-        calc.div(12,0);
+        // when
+        calc.div(13,0);
 
-        //then
-        // za pomoca adnotacji przed metoda
+        // then
     }
+
+    /**
+     * Testowanie wyjątku z użyciem asercji
+     */
+    @Test
+    public void shouldDisplayErrorWhenDivByZero2Test(){
+
+        // when
+        try {
+            calc.div(13, 0);
+        }catch (Exception e){
+            assertTrue(e instanceof IllegalArgumentException);
+            assertTrue(e.getMessage().contains(DIV_ERROR_MESSAGE));
+        }
+        // then
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    /**
+     * Test wyjatku z użycniem reguły @Rule
+     */
+    @Test
+    public void shouldDisplayErrorDivByZero3Test(){
+        // then
+        // konfiguracja asercji reguły
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage(DIV_ERROR_MESSAGE);
+
+        // when
+        calc.div(3,0);
+
+    }
+
+    /**
+     * TODO Zadanie: Test pressNumber() z wartości null
+     * zrzuca wyjatek IllegalArgumentException
+     * Przetestuj na 3 sposoby. ( ogólnie, try/catch, rule)
+     */
 
 }
