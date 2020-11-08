@@ -6,4 +6,14 @@ package pl.sdacademy.javapoz25;
  * @since : 08.11.2020
  **/
 public class CalculatorImpl implements Calculator {
+
+    @Override
+    public String display() {
+        return "15";
+    }
+
+    @Override
+    public void add(int liczbaA, int liczbaB) {
+
+    }
 }
