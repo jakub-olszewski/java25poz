@@ -48,4 +48,18 @@ public class CalculatorTest {
 
     }
 
+    @Test
+    public void shouldAdd5TimesSuccessedTest(){
+        calc.add(5,10);
+        assertEquals("15",calc.display(),"Display must contain 15!");
+        calc.add(5,1);
+        assertEquals("6",calc.display(),"Display must contain 6!");
+        calc.add(5,0);
+        assertEquals("5",calc.display(),"Display must contain 5!");
+        calc.add(8,1);
+        assertEquals("9",calc.display(),"Display must contain 9!");
+        calc.add(2,10);
+        assertEquals("12",calc.display(),"Display must contain 12!");
+    }
+
 }
