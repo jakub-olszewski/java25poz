@@ -62,4 +62,14 @@ public class CalculatorTest {
         assertEquals("12",calc.display(),"Display must contain 12!");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldDisplayErrorWhenDivByZeroTest(){
+
+        //when
+        calc.div(12,0);
+
+        //then
+        // za pomoca adnotacji przed metoda
+    }
+
 }
